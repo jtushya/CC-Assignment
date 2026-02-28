@@ -1,13 +1,13 @@
-# Build artefacts
-build/
+# ---- Generated / build artefacts ----
+phase1/lexer.c
+phase1/lexer
 *.o
-*.obj
-*.exe
 *.out
 
-# Editor files
+# ---- Editor / IDE ----
 .vscode/
 *.swp
+*~
 
-# Misc
+# ---- Misc ----
 *.log
