@@ -22,7 +22,7 @@ run on **Ubuntu 20.04+** with GNU `flex` and `gcc`.
 ## Repository Layout
 
 ```
-.
+. 
 ├── README.md              ← you are here
 ├── CC assignment.md       ← original assignment spec
 ├── phase1/
@@ -30,7 +30,7 @@ run on **Ubuntu 20.04+** with GNU `flex` and `gcc`.
 │   ├── LexicalSpec.md     ← regex for every terminal symbol
 │   ├── tokens.h           ← C header with token #defines
 │   ├── lexer.l            ← flex source (the lexer)
-│   └── Makefile           ← build & test targets
+│   └── (build manually using `flex` + `gcc`)
 └── tests/
     ├── valid_program.jl   ← valid Julia program (no errors expected)
     └── error_program.jl   ← program with intentional lexical errors
@@ -44,7 +44,7 @@ Install `flex` and `gcc` (one-time):
 
 ```bash
 sudo apt update
-sudo apt install -y flex gcc make
+sudo apt install -y flex gcc make texlive-latex-base
 ```
 
 ---
@@ -52,19 +52,23 @@ sudo apt install -y flex gcc make
 ## Build & Run
 
 ```bash
-# 1. Build the lexer
+# Build the lexer manually (recommended):
 cd phase1
-make            # runs: flex → lexer.c → gcc → ./lexer
+flex lexer.l            # produces lex.yy.c
+gcc lex.yy.c -lfl -o lexer
 
-# 2. Run on the valid test program
-make test       # runs lexer on both test files automatically
-
-# 3. Or run manually
+# Run on tests
 ./lexer ../tests/valid_program.jl
 ./lexer ../tests/error_program.jl
 
-# 4. Clean generated files
-make clean
+# Cleanup (from phase1/)
+rm -f lex.yy.c lexer
+
+# Build the Phase 1 PDF report (from repo root):
+cd docs
+pdflatex report.tex
+pdflatex report.tex
+# output: docs/report.pdf
 ```
 
 ---
