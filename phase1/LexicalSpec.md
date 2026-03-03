@@ -23,7 +23,7 @@ required by Phase 1, Task 3.
 | `TYPE_BOOL`  | `Bool`          | Boolean type annotation            |
 | `TYPE_STR`   | `String`        | String type annotation             |
 
-> Keywords are matched **before** identifiers (longest-match / first-match rule in Lex).
+> Keywords are matched **before** identifiers (longest-match rule).
 
 ---
 
@@ -45,7 +45,7 @@ An identifier must **not** be a keyword.
 | `FLOAT_LIT`  | `[0-9]+\.[0-9]+`                       | `3.14`, `0.5`       |
 | `STRING_LIT` | `\"[^\"]*\"`                           | `"hello"`, `""`     |
 
-> `BOOL_LIT` is handled by the keywords `true` / `false`.
+> Boolean literals (`true` / `false`) are matched as keywords (see Section 1).
 
 ---
 
@@ -70,8 +70,7 @@ An identifier must **not** be a keyword.
 | `ASSIGN`     | `=`     | Assignment               |
 
 > Multi-character operators (`==`, `!=`, `<=`, `>=`, `&&`, `||`)
-> are matched **before** their single-character prefixes via the
-> longest-match rule in Lex.
+> are matched **before** their single-character prefixes.
 
 ---
 
@@ -81,7 +80,7 @@ An identifier must **not** be a keyword.
 |-----------------|---------|------------------------------|
 | `LPAREN`        | `(`     | Left parenthesis             |
 | `RPAREN`        | `)`     | Right parenthesis            |
-| `DOUBLE_COLON`  | `::`    | Type annotation separator    |
+| `DCOLON`        | `::`    | Type annotation separator    |
 | `SEMICOLON`     | `;`     | Statement separator          |
 | `NEWLINE`       | `\n`    | Statement terminator         |
 
@@ -94,8 +93,8 @@ An identifier must **not** be a keyword.
 | `[ \t\r]+`             | Skip (ignored whitespace)      |
 | `#[^\n]*`              | Skip (single-line comment)     |
 
-> In Julia, `#` introduces a single-line comment.  
-> Newlines (`\n`) are **not** skipped — they serve as statement terminators.
+> `#` introduces a single-line comment in Julia.  
+> Newlines are **not** skipped — they act as statement terminators.
 
 ---
 
@@ -103,8 +102,3 @@ An identifier must **not** be a keyword.
 
 Any character that does **not** match the above patterns is reported as a
 **lexical error** with its line number and the offending character.
-
----
-
-*Each regex above directly corresponds to a rule in the Lex source file
-(`phase1/lexer.l`).*

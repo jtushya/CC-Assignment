@@ -1,5 +1,3 @@
-% Phase 1 Report — Minimal Julia Subset
-% LaTeX report for CS F363 Compiler Construction — Phase 1
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{longtable}
@@ -8,11 +6,9 @@
 \usepackage{listings}
 
 \begin{document}
-
-% Cover page
 \begin{titlepage}
   \centering
-  {\Huge \textbf{ CS F363 — Compiler Construction\\[1ex]}}
+  {\Huge \textbf{ CS F365 — Compiler Construction\\[1ex]}}
   {\LARGE Phase 1 Report: Lexical Analysis\\[4ex]}
 
   {\LARGE Project Group ID: CSF365-JULIA-Group 31\\[2ex]}
@@ -33,13 +29,11 @@
 \end{titlepage}
 
 \section*{Abstract}
-This report contains the Context-Free Grammar (CFG) and the lexical
-specification (regular expressions) for a minimal subset of the Julia
-programming language used for the Phase 1 deliverable.
+This report covers the CFG and lexical specification for a minimal subset of Julia,
+corresponding to the Phase 1 deliverables.
 
 \section{Context-Free Grammar (CFG)}
-The CFG for the minimal Julia subset (non-terminals are in UPPERCASE for
-readability):
+Non-terminals are shown in UPPERCASE:
 
 \begin{verbatim}
 Program         -> StmtList
@@ -84,7 +78,6 @@ NEWLINE         -> '\\n' (or ';')
 \end{verbatim}
 
 \section{Lexical Specification (Regular Expressions)}
-The following table lists the token names and their regular expressions.
 
 \begin{longtable}{p{0.3\textwidth} p{0.6\textwidth}}
 Token(s) & Regular expression / literal \\

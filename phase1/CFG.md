@@ -70,9 +70,7 @@ WhileStmt       → "while" Expr NEWLINE StmtList "end" NEWLINE
 # ---------- Print (handy for testing) ----------
 PrintStmt       → "println" "(" Expr ")" NEWLINE
 
-# ====================================================
-# Expressions — with PRECEDENCE (lowest → highest)
-# ====================================================
+# Expressions (lowest → highest precedence)
 
 # Level 1 — Logical OR  (lowest precedence)
 Expr            → Expr "||" LogAndExpr
@@ -113,15 +111,15 @@ Primary         → IDENTIFIER
                  | INT_LIT
                  | FLOAT_LIT
                  | STRING_LIT
-                 | BOOL_LIT
+                 | TRUE
+                 | FALSE
                  | "(" Expr ")"
 
-# ========= Terminal Tokens =========
+# Terminal tokens
 IDENTIFIER      → [a-zA-Z_][a-zA-Z0-9_]*      (not a keyword)
 INT_LIT         → [0-9]+
 FLOAT_LIT       → [0-9]+ "." [0-9]+
 STRING_LIT      → '"' (any char except '"')* '"'
-BOOL_LIT        → "true" | "false"
 NEWLINE         → '\n' (or ';')
 ```
 
@@ -136,10 +134,3 @@ NEWLINE         → '\n' (or ';')
 | 5     | `+  -`                    | Left          |
 | 6     | `*  /  %`                 | Left          |
 | 7     | `-` (unary prefix)        | Right         |
-
----
-
-*This CFG specifies a minimal but complete subset of Julia sufficient for the
-assignment requirements: declarations, assignment, arithmetic/relational/logical
-expressions with multiple precedence levels, one conditional (`if`), and one loop
-(`while`).*
