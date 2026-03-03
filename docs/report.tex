@@ -15,17 +15,18 @@
   {\Huge CS F365 — Compiler Construction\\[1ex]}
   {\LARGE Phase 1 Report: Lexical Analysis\\[4ex]}
 
-  {\large Project Group ID: CSF365-JULIA-01\\[1ex]}
+  {\large Project Group ID: CSF365-JULIA-Group 31\\[1ex]}
 
-  {\large Team: \\
-  Aryan Kamlesh Agrawal (2023A7PS0085H) \\
-  Tushya Jain (2023A7PS0150H) \\
-  Gursidak Singh Bassi (2023A7PS0033H) \\
-  Jainam Parekh (2023A7PS0137H) \\
-  }
+  {\large Team:}\\[1ex]
+  \begin{tabular}{@{}ll@{}}
+  Aryan Kamlesh Agrawal & 2023A7PS0085H (Leader) \\
+  Tushya Jain & 2023A7PS0150H \\
+  Gursidak Singh Bassi & 2023A7PS0033H \\
+  Jainam Parekh & 2023A7PS0137H \\
+  \end{tabular}
 
   \vfill
-  {\large Institute: Your Institute Name Here}\\
+  {\large Institute: BITS Pilani, Hyderabad Campus}\\
   {\large Date: \today}
 \end{titlepage}
 
@@ -83,32 +84,33 @@ NEWLINE         -> '\\n' (or ';')
 \section{Lexical Specification (Regular Expressions)}
 The following table lists the token names and their regular expressions.
 
-\begin{longtable}{p{0.25\textwidth} p{0.7\textwidth}}
-Token & Regular expression / literal \\
+\begin{longtable}{p{0.3\textwidth} p{0.6\textwidth}}
+Token(s) & Regular expression / literal \\
 \hline
-IF & "if" \\
-ELSEIF & "elseif" \\
-ELSE & "else" \\
-END & "end" \\
-WHILE & "while" \\
-PRINTLN & "println" \\
-TRUE & "true" \\
-FALSE & "false" \\
-TYPE_INT & "Int64" \\
-TYPE_FLOAT & "Float64" \\
-TYPE_BOOL & "Bool" \\
-TYPE_STR & "String" \\
-IDENTIFIER & [a-zA-Z_][a-zA-Z0-9_]* \\
-INT_LIT & [0-9]+ \\
-FLOAT_LIT & [0-9]+\.[0-9]+ \\
-STRING_LIT & \"[^\"]*\" \\
-EQ & ==, NEQ & !=, LT & <, GT & >, LEQ & <=, GEQ & >= \\
-AND & &&, OR & ||, NOT & ! \\
-ASSIGN & = \\
-DCOLON & :: \\
-LPAREN / RPAREN & ( / ) \\
-SEMICOLON & ; \\
-NEWLINE & \\n\end{longtable}
+\texttt{IF} & \texttt{if} \\
+\texttt{ELSEIF} & \texttt{elseif} \\
+\texttt{ELSE} & \texttt{else} \\
+\texttt{END} & \texttt{end} \\
+\texttt{WHILE} & \texttt{while} \\
+\texttt{PRINTLN} & \texttt{println} \\
+\texttt{TRUE} & \texttt{true} \\
+\texttt{FALSE} & \texttt{false} \\
+\texttt{TYPE\_INT} & \texttt{Int64} \\
+\texttt{TYPE\_FLOAT} & \texttt{Float64} \\
+\texttt{TYPE\_BOOL} & \texttt{Bool} \\
+\texttt{TYPE\_STR} & \texttt{String} \\
+\texttt{IDENTIFIER} & \verb@[a-zA-Z_][a-zA-Z0-9_]*@ \\
+\texttt{INT\_LIT} & \verb@[0-9]+@ \\
+\texttt{FLOAT\_LIT} & \verb@[0-9]+\.[0-9]+@ \\
+\texttt{STRING\_LIT} & \verb@"[^"]*"@ \\
+\texttt{EQ, NEQ, LT, GT, LEQ, GEQ} & \texttt{==, !=, <, >, <=, >=} \\
+\texttt{AND, OR, NOT} & \texttt{\&\&, ||, !} \\
+\texttt{ASSIGN} & \texttt{=} \\
+\texttt{DCOLON} & \texttt{::} \\
+\texttt{LPAREN / RPAREN} & \texttt{( / )} \\
+\texttt{SEMICOLON} & \texttt{;} \\
+\texttt{NEWLINE} & \texttt{\textbackslash n} \\
+\end{longtable}
 
 \section{Notes}
 - Keywords are matched before identifiers.
