@@ -1,0 +1,124 @@
+% Phase 1 Report — Minimal Julia Subset
+% LaTeX report for CS F365 Compiler Construction — Phase 1
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\begin{document}
+
+% Cover page
+\begin{titlepage}
+  \centering
+  {\Huge CS F365 — Compiler Construction\\[1ex]}
+  {\LARGE Phase 1 Report: Lexical Analysis\\[4ex]}
+
+  {\large Project Group ID: CSF365-JULIA-01\\[1ex]}
+
+  {\large Team: \\
+  Aryan Kamlesh Agrawal (2023A7PS0085H) \\
+  Tushya Jain (2023A7PS0150H) \\
+  Gursidak Singh Bassi (2023A7PS0033H) \\
+  Jainam Parekh (2023A7PS0137H) \\
+  }
+
+  \vfill
+  {\large Institute: Your Institute Name Here}\\
+  {\large Date: \today}
+\end{titlepage}
+
+\section*{Abstract}
+This report contains the Context-Free Grammar (CFG) and the lexical
+specification (regular expressions) for a minimal subset of the Julia
+programming language used for the Phase 1 deliverable.
+
+\section{Context-Free Grammar (CFG)}
+The CFG for the minimal Julia subset (non-terminals are in UPPERCASE for
+readability):
+
+\begin{verbatim}
+Program         -> StmtList
+
+StmtList        -> Stmt StmtList | \epsilon
+
+Stmt            -> VarDecl | Assignment | IfStmt | WhileStmt | PrintStmt
+
+VarDecl         -> IDENTIFIER "::" Type "=" Expr NEWLINE
+                 | IDENTIFIER "=" Expr NEWLINE
+
+Type            -> "Int64" | "Float64" | "Bool" | "String"
+
+Assignment      -> IDENTIFIER "=" Expr NEWLINE
+
+IfStmt          -> "if" Expr NEWLINE StmtList ElseIfList ElseBlock "end" NEWLINE
+ElseIfList      -> "elseif" Expr NEWLINE StmtList ElseIfList | \epsilon
+ElseBlock       -> "else" NEWLINE StmtList | \epsilon
+
+WhileStmt       -> "while" Expr NEWLINE StmtList "end" NEWLINE
+
+PrintStmt       -> "println" "(" Expr ")" NEWLINE
+
+Expr            -> Expr "||" LogAndExpr | LogAndExpr
+LogAndExpr      -> LogAndExpr "&&" NotExpr | NotExpr
+NotExpr         -> "!" NotExpr | RelExpr
+RelExpr         -> AddExpr RelOp AddExpr | AddExpr
+RelOp           -> "==" | "!=" | "<" | ">" | "<=" | ">="
+AddExpr         -> AddExpr AddOp MulExpr | MulExpr
+AddOp           -> "+" | "-"
+MulExpr         -> MulExpr MulOp UnaryExpr | UnaryExpr
+MulOp           -> "*" | "/" | "%"
+UnaryExpr       -> "-" UnaryExpr | Primary
+Primary         -> IDENTIFIER | INT_LIT | FLOAT_LIT | STRING_LIT | BOOL_LIT | "(" Expr ")"
+
+IDENTIFIER      -> [a-zA-Z_][a-zA-Z0-9_]*
+INT_LIT         -> [0-9]+
+FLOAT_LIT       -> [0-9]+\.[0-9]+
+STRING_LIT      -> \"[^\"]*\"
+BOOL_LIT        -> "true" | "false"
+NEWLINE         -> '\\n' (or ';')
+\end{verbatim}
+
+\section{Lexical Specification (Regular Expressions)}
+The following table lists the token names and their regular expressions.
+
+\begin{longtable}{p{0.25\textwidth} p{0.7\textwidth}}
+Token & Regular expression / literal \\
+\hline
+IF & "if" \\
+ELSEIF & "elseif" \\
+ELSE & "else" \\
+END & "end" \\
+WHILE & "while" \\
+PRINTLN & "println" \\
+TRUE & "true" \\
+FALSE & "false" \\
+TYPE_INT & "Int64" \\
+TYPE_FLOAT & "Float64" \\
+TYPE_BOOL & "Bool" \\
+TYPE_STR & "String" \\
+IDENTIFIER & [a-zA-Z_][a-zA-Z0-9_]* \\
+INT_LIT & [0-9]+ \\
+FLOAT_LIT & [0-9]+\.[0-9]+ \\
+STRING_LIT & \"[^\"]*\" \\
+EQ & ==, NEQ & !=, LT & <, GT & >, LEQ & <=, GEQ & >= \\
+AND & &&, OR & ||, NOT & ! \\
+ASSIGN & = \\
+DCOLON & :: \\
+LPAREN / RPAREN & ( / ) \\
+SEMICOLON & ; \\
+NEWLINE & \\n\end{longtable}
+
+\section{Notes}
+- Keywords are matched before identifiers.
+- Multi-character operators (==, !=, <=, >=, &&, ||, ::) are matched before
+  single-character operators according to the longest-match rule.
+
+\section{Appendix: Files Submitted}
+- `phase1/CFG.md` — formal CFG
+- `phase1/LexicalSpec.md` — regex per token
+- `phase1/lexer.l` and `phase1/tokens.h` — flex lexer implementation
+- `tests/valid_program.jl` and `tests/error_program.jl` — test inputs
+
+\end{document}
