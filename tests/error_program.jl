@@ -1,28 +1,23 @@
-# -------------------------------------------------------
-# Julia Program with LEXICAL ERRORS — Phase 1 Test (Task 5)
-#
-# This file intentionally contains characters/tokens that
-# the lexer cannot recognise, so it should report errors.
-# -------------------------------------------------------
+# Phase 1 test — intentional lexical errors
 
-# --- Valid declarations first ---
+# valid declarations
 x = 10
 y = 3.14
 
-# ERROR 1: '@' is not a valid character in our Julia subset
+# ERROR 1: '@' not in token set
 z = x @ y
 
-# ERROR 2: '$' is not in our token set
+# ERROR 2: '$' not in token set
 price = $100
 
-# ERROR 3: '~' is not recognised
+# ERROR 3: '~' not in token set
 mask = ~x
 
-# ERROR 4: backtick is not in our subset
+# ERROR 4: backtick not in token set
 cmd = `ls`
 
-# ERROR 5: '^' (we did not include exponentiation)
+# ERROR 5: '^' not in token set
 power = x ^ 2
 
-# A valid statement after errors (lexer should recover)
+# lexer should recover and continue
 println(x)
