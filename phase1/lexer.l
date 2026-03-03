@@ -25,7 +25,7 @@ static void print_token(const char *name, const char *lexeme) {
 [ \t\r]+            { /* skip whitespace */ }
 
 /* Newline — statement terminator */
-\n                  { line_num++; print_token("NEWLINE", "\\n"); return TOK_NEWLINE; }
+\n                  { print_token("NEWLINE", "\\n"); line_num++; return TOK_NEWLINE; }
 
 /* Keywords (match before IDENTIFIER) */
 
