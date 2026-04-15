@@ -1,8 +1,22 @@
 # ---- Generated / build artefacts ----
 phase1/lexer.c
 phase1/lexer
+phase2/parser.tab.c
+phase2/parser.tab.h
+phase2/lex.yy.c
+phase2/julia_compiler
+phase2/intermediate_error.tac
+phase2/intermediate_code.tac
 *.o
 *.out
+*.zip
+submission_*/
+
+# ---- LaTeX generated files ----
+docs/*.aux
+docs/*.log
+docs/*.pdf
+docs/*.out
 
 # ---- Editor / IDE ----
 .vscode/
