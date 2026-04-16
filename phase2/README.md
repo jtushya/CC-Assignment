@@ -73,7 +73,7 @@ Expected artifacts
 Packaging (submission)
 ----------------------
 Follow the repository root README for packaging; a helper `package_submission.sh`
-is provided to assemble the required files into `CSF365-JULIA-Group31.zip`.
+is provided to assemble the required files into `CSf364-JULIA-Group31.zip`.
 
 Notes for evaluators
 --------------------

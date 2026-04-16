@@ -1,7 +1,7 @@
 # Context-Free Grammar — Minimal Julia Subset
 
 ## Group Details
-- **Course:** CS F365 Compiler Construction
+- **Course:** CS f364 Compiler Construction
 - **Chosen Language:** Julia
 - **Group Leader:** Aryan Kamlesh Agrawal (2023A7PS0085H)
 - **Members:**

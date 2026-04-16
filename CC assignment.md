@@ -1,4 +1,4 @@
-# CS F365 Compiler Construction Assignment
+# CS f364 Compiler Construction Assignment
 
 This assignment will be carried out in two phases. Students must work in groups of up to a maximum of 5 members.
 

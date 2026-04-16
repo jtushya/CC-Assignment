@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GROUP_ID="CSF365-JULIA-Group31"
+GROUP_ID="CSf364-JULIA-Group31"
 ZIP_NAME="${GROUP_ID}.zip"
 TMP_DIR="submission_${GROUP_ID}"
 

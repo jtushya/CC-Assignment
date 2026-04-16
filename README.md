@@ -1,4 +1,4 @@
-# CS F365 — Compiler Construction
+# CS f364 — Compiler Construction
 
 ## Group
 | Name                        | ID              | Role   |
@@ -130,7 +130,7 @@ Required files to include in the zip:
 
 Recommended zip name:
 
-- `CSF365-JULIA-Group31.zip`
+- `CSf364-JULIA-Group31.zip`
 
 Generate cover page PDF on Ubuntu:
 
@@ -147,7 +147,7 @@ chmod +x package_submission.sh
 ./package_submission.sh
 ```
 
-This produces: `CSF365-JULIA-Group31.zip`
+This produces: `CSf364-JULIA-Group31.zip`
 
 ---
 
